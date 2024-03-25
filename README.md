@@ -4,7 +4,7 @@ Code for seal sleep classifier for use in EcoViz+AI Workshop.
 
 This GitHub repository is meant to serve as a demonstration for how Seal ECG, EEG, body movement, and pressure features can be used in a machine learning model to automate seal sleep state prediction.
 
-## Directory structure
+# Directory structure
 
 ├── LICENSE
 ├── README.md
@@ -31,18 +31,29 @@ This GitHub repository is meant to serve as a demonstration for how Seal ECG, EE
     ├── feature_extraction.py                               Methods for features extraction
     └── feature_generation.py                               Wrapper for feature extraction that provides functionality for command-line feature extraction and a function to generate all the features from a specified .edf file
 
-## Prerequisites
+# Prerequisites
 - Python 3.10 (tested with 3.10.9)
 - [Jupyter notebooks](https://jupyter.org/install)
 - Seal Sleep data files, downloaded from: [**FigShare Seal Sleep Project**](https://figshare.com/account/projects/199498/articles/25464379)
 
-## Notebooks
-- ***00_initial_feature_extraction.ipynb***: Initial notebook used for feature extraction, not the prettiest of notebooks, but walks through heart rate extraction from ECG using peak detection. Also goes through each of the features and plots their distributions to get a first-pass glimpse at the feature space.
-- ***01_initial_features_and_models.ipynb***: Uses the features created in *00_initial_feature_extraction* to create a few rudimentary scikit-learn machine learning models, including a Support Vector Machine Classifier (SVC), K Nearest Neighbors Classifier (KNN), and Random Forest Classifier (RFC). Also performs grid searching on each of these estimators to find ideal or close-to-ideal parameterizations of these models.
-- ***01a_YASA_feature_extraction.ipynb***: Has a simple demonstration of applying the YASA sleep staging algorithm built for humans onto one seal. While the performance is not the best, many of the features implemented by YASA were used for this project, and in some cases their code was used as well (but adjusted for seals). Note that YASA requires a LOT of memory and the kernel often crashes for me if I have other notebooks running or too many Google Chrome tabs open.
-- ***02_advanced_feature_generation_and_models.ipynb***: Uses the (semi) finalized feature extraction code in ***feature_extraction.py*** and ***feature_generation.py*** to generate all the available features for sleep detection created so far. Also creates a RFC using the grid-searched parameters from ***01_initial_features_and_models***, and plots the predictions against the true labels and features for a few naps
+# Notebooks
 
-## Usage
+#### 00_initial_feature_extraction.ipynb
+Initial notebook used for feature extraction, not the prettiest of notebooks, but walks through heart rate extraction from ECG using peak detection. Also goes through each of the features and plots their distributions to get a first-pass glimpse at the feature space.
+
+#### 01_initial_features_and_models.ipynb
+Uses the features created in *00_initial_feature_extraction* to create a few rudimentary scikit-learn machine learning models, including a Support Vector Machine Classifier (SVC), K Nearest Neighbors Classifier (KNN), and Random Forest Classifier (RFC). Also performs grid searching on each of these estimators to find ideal or close-to-ideal parameterizations of these models.
+
+#### 01a_YASA_feature_extraction.ipynb
+Has a simple demonstration of applying the YASA sleep staging algorithm built for humans onto one seal. While the performance is not the best, many of the features implemented by YASA were used for this project, and in some cases their code was used as well (but adjusted for seals). Note that YASA requires a LOT of memory and the kernel often crashes for me if I have other notebooks running or too many Google Chrome tabs open.
+
+#### 02_advanced_feature_generation_and_models.ipynb
+Uses the (semi) finalized feature extraction code in ***feature_extraction.py*** and ***feature_generation.py*** to generate all the available features for sleep detection created so far. Also creates a RFC using the grid-searched parameters from ***01_initial_features_and_models***, and plots the predictions against the true labels and features for a few naps
+
+#### 03_recursive_feature_elimination.ipynb
+Performs recursive feature elimination using the model from ***02_advanced_feature_generation_and_models.ipynb*** to explore which features are the most informative for seal sleep prediction.
+
+# Script and Command-line Usage
 <ins>feature_extraction.py</ins>
 </br>
 You can look at the function code in *src* to see optional arguments and their defaults
