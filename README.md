@@ -6,6 +6,7 @@ This GitHub repository is meant to serve as a demonstration for how Seal ECG, EE
 
 # Directory structure
 
+```
 ├── LICENSE
 ├── README.md
 ├── data
@@ -30,6 +31,7 @@ This GitHub repository is meant to serve as a demonstration for how Seal ECG, EE
 └── src
     ├── feature_extraction.py                               Methods for features extraction
     └── feature_generation.py                               Wrapper for feature extraction that provides functionality for command-line feature extraction and a function to generate all the features from a specified .edf file
+```
 
 # Prerequisites
 - Python 3.10 (tested with 3.10.9)
@@ -54,8 +56,7 @@ Uses the (semi) finalized feature extraction code in ***feature_extraction.py***
 Performs recursive feature elimination using the model from ***02_advanced_feature_generation_and_models.ipynb*** to explore which features are the most informative for seal sleep prediction.
 
 # Script and Command-line Usage
-<ins>feature_extraction.py</ins>
-</br>
+### feature_extraction.py
 You can look at the function code in *src* to see optional arguments and their defaults
 
 #### get_features_yasa
@@ -100,7 +101,6 @@ get_rolling_zero_crossings(a, start_index, end_index, freq=500, window_sec=1): G
 
 #### get_rolling_band_power_multitaper
 get_rolling_band_power_multitaper(a, start_index, end_index, freq_range=(0.5, 4), ref_power=1e-13, freq=500, window_sec=2, step_size=1, in_dB=True): Gets the power of the specified frequency range using MNE's power spectral density multitaper method and Simpson's method for approximating area under the curve of the power spectral density (if in_dB=True, else just returns the PSD mean). While this is theoretically more accurate than Welch, it is much much slower and the increased granularity is not worth the time it takes when applied to large datasets.
-</br>
-<ins>feature_generation.py</ins>
-</br>
+
+### feature_generation.py
 This python script is a wrapper of the feature_extraction.py script, and can be run from the terminal using `python feature_generation.py <Input_EDF_Filepath> <Output_CSV_Filepath> [Config_Filepath]`. The Config_Filepath should be a path to a json file that has key value pairs like the ones in the DEFAULT_CONFIG variable at the top of the feature_generation.py script. These parameters can be used to adjust window size, step size, and other parameters used by some of the feature functions (although some of the parameters have not been tested thoroughly so adjust them at your own risk). Any config keys not defined by the config file will use the default values defined at the top of feature_generation.py
