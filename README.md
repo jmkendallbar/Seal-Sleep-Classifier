@@ -36,7 +36,9 @@ This GitHub repository is meant to serve as a demonstration for how Seal ECG, EE
 # Prerequisites
 - Python 3.10 (tested with 3.10.9)
 - [Jupyter notebooks](https://jupyter.org/install)
-- Seal Sleep data files, downloaded from: [**FigShare Seal Sleep Project**](https://figshare.com/account/projects/199498/articles/25464379)
+- Seal Sleep data files, downloaded from: [**FigShare Seal Sleep Project**](https://figshare.com/articles/dataset/test12_Wednesday_Data-Subset/25464379)
+- Python libraries
+`pip install -r requirements.txt` or `pip3 install -r requirements.txt` for python3-specific
 
 # Notebooks
 
