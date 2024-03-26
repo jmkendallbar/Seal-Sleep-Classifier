@@ -63,6 +63,7 @@ You can look at the function code in *src* to see optional arguments and their d
 
 #### get_features_yasa
 get_features_yasa(a, start_index, end_index, freq=500): Gets the EEG features from a 500 Hz (or any frequency, just make sure you change freq=500 to whatever your sample frequency is). Uses overlapping epochs with size of 30 seconds and 50% overlap (so epoch centers are every 15 seconds):
+
     - yasa_time                 datetime, included to make sure yasa features line up with other features
     - yasa_eeg_std              eeg epoch standard deviation
     - yasa_eeg_iqr              eeg interquartile range
